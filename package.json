@@ -1,0 +1,28 @@
+{
+  "name": "proxy-s3-google-oauth",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "DEBUG=proxy-s3-google-oauth:* nodemon --exec npm start"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.4.1",
+    "express": "~4.13.4",
+    "morgan": "~1.7.0",
+    "node-sass-middleware": "0.8.0",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-semistandard": "^7.0.0",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-react": "^6.3.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "nodemon": "^1.10.2"
+  }
+}

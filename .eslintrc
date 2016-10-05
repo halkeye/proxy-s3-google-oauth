@@ -1,0 +1,7 @@
+{
+  "extends": "semistandard",
+  "env": {
+    "es6": true,
+    "node": true
+  }
+}
