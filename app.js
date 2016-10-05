@@ -76,13 +76,16 @@ app.use(passport.session());
 app.post('/login', passport.authenticate('', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'], hd: process.env.GOOGLE_HOSTED_DOMAIN }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function (req, res) {
-  // Successful authentication, redirect home.
-  res.redirect('/');
+  var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
+  delete req.session.redirectTo;
+  // is authenticated ?
+  res.redirect(redirectTo);
 });
 
 function authenticationMiddleware () {
   return function (req, res, next) {
     if (req.isAuthenticated()) { return next(); }
+    req.session.redirectTo = req.originalUrl;
     res.redirect('/auth/google');
   };
 }
