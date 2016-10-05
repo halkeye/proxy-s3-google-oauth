@@ -1,11 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include ./partials/head %>
+
+<h1><%= title %></h1>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Last Modified</th>
+    <th>Size</th>
+<% data.CommonPrefixes.forEach(function(content) { %>
+  <tr>
+    <td colspan="3"><a href="/<%= content.Prefix %>"><%= content.Prefix %></a></td>
+  </tr>
+<% }) %>
+<%
+data.Contents.forEach(function(content) {
+  if (content.Key.endsWith('/')) { return; }
+%>
+  <tr>
+    <td><a href="/<%= content.Key %>"><%= content.Key %></a></td>
+    <td><%= content.LastModified %></td>
+    <td><%= content.Size %></td>
+  </tr>
+<% }) %>
+</table>
+
+<pre> <%= JSON.stringify(data) %> </pre>
+
+<% include ./partials/foot %>
+

@@ -7,13 +7,21 @@
     "dev": "DEBUG=proxy-s3-google-oauth:* nodemon --exec npm start"
   },
   "dependencies": {
+    "aws-sdk": "^2.6.6",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
+    "cookie-session": "^2.0.0-alpha.1",
     "debug": "~2.2.0",
     "ejs": "~2.4.1",
     "express": "~4.13.4",
+    "express-session": "^1.14.1",
+    "install": "^0.8.1",
     "morgan": "~1.7.0",
     "node-sass-middleware": "0.8.0",
+    "npm": "^3.10.8",
+    "passport": "^0.3.2",
+    "passport-google-oauth20": "^1.0.0",
+    "request": "^2.75.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
