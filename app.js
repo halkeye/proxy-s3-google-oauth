@@ -8,13 +8,13 @@
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
-var request = require('request');
 // var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cookieSession = require('cookie-session');
 var AWS = require('aws-sdk');
+var mime = require('mime');
 
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -98,10 +98,27 @@ app.get('*', authenticationMiddleware(), function (req, res, next) {
       res.render('index', { title: 'Files', data: data });
     });
   } else {
-    var params = { Key: prefix, Bucket: process.env.AWS_S3_BUCKET, Expires: 60 };
-    s3bucket.getSignedUrl('getObject', params, function (err, url) {
+    var params = { Key: prefix, Bucket: process.env.AWS_S3_BUCKET };
+    s3bucket.headObject(params, function (err, data) {
       if (err) { return next(err); }
-      request(url).pipe(res);
+      var stream = s3bucket.getObject(params).createReadStream();
+      // forward errors
+      stream.on('error', function error (err) {
+        // continue to the next middlewares
+        return next(err);
+      });
+
+      // Add the content type to the response (it's not propagated from the S3 SDK)
+      res.set('Content-Type', mime.lookup(params.Key));
+      res.set('Content-Length', data.ContentLength);
+      res.set('Last-Modified', data.LastModified);
+      res.set('ETag', data.ETag);
+
+      stream.on('end', function end () {
+        console.log('Served by Amazon S3: ', params.Key);
+      });
+      // Pipe the s3 object to the response
+      stream.pipe(res);
     });
   }
 });
