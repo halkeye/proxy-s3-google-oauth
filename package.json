@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.6.6",
-    "body-parser": "~1.16.0",
+    "body-parser": "~1.17.0",
     "cookie-parser": "~1.4.3",
     "cookie-session": "^2.0.0-alpha.1",
     "debug": "~2.6.0",
