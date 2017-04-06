@@ -15,6 +15,7 @@ var bodyParser = require('body-parser');
 var cookieSession = require('cookie-session');
 var AWS = require('aws-sdk');
 var mime = require('mime');
+var url = require('url');
 
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -91,7 +92,7 @@ function authenticationMiddleware () {
 }
 
 app.get('*', authenticationMiddleware(), function (req, res, next) {
-  var prefix = req.originalUrl.split('/').slice(1).join('/');
+  var prefix = url.parse(req.originalUrl).pathname.split('/').slice(1).join('/');
   if (!prefix || prefix.endsWith('/')) {
     s3bucket.listObjects({ Delimiter: `/${prefix}`, Prefix: prefix }, function (err, data) {
       if (err) { return next(err); }
