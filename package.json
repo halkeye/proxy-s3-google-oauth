@@ -24,7 +24,7 @@
     "serve-favicon": "~2.4.0"
   },
   "devDependencies": {
-    "eslint": "^3.7.1",
+    "eslint": "^4.0.0",
     "eslint-config-standard": "^10.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-node": "^5.0.0",
