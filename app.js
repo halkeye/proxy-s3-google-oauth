@@ -35,8 +35,8 @@ passport.use(
       fs.writeFileSync('./users.json', JSON.stringify(users));
     }
     cb(null, user);
-  }
-));
+  })
+);
 
 passport.serializeUser(function (user, done) { done(null, user); });
 passport.deserializeUser(function (obj, done) { done(null, obj); });
