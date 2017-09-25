@@ -14,7 +14,7 @@
     "cookie-session": "^2.0.0-alpha.1",
     "debug": "~3.0.0",
     "ejs": "~2.5.2",
-    "express": "~4.14.0",
+    "express": "~5.0.0-alpha.6",
     "express-session": "^1.14.1",
     "mime": "^2.0.0",
     "morgan": "~1.8.0",
