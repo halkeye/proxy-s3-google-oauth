@@ -110,7 +110,7 @@ app.get('*', authenticationMiddleware(), function (req, res, next) {
       });
 
       // Add the content type to the response (it's not propagated from the S3 SDK)
-      res.set('Content-Type', mime.lookup(params.Key));
+      res.set('Content-Type', mime.getType(params.Key));
       res.set('Content-Length', data.ContentLength);
       res.set('Last-Modified', data.LastModified);
       res.set('ETag', data.ETag);
