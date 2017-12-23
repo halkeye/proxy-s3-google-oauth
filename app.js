@@ -96,6 +96,11 @@ app.get('*', authenticationMiddleware(), function (req, res, next) {
   if (!prefix || prefix.endsWith('/')) {
     s3bucket.listObjects({ Delimiter: `/${prefix}`, Prefix: prefix }, function (err, data) {
       if (err) { return next(err); }
+      const hasIndex = !!data.Contents.find(c => c.Key === `${prefix}index.html`);
+      if (hasIndex) {
+        res.redirect('index.html');
+        return;
+      }
       res.render('index', { title: 'Files', data: data });
     });
   } else {
