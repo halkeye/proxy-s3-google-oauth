@@ -4,7 +4,7 @@ Google Oauth Proxy to S3
 [![Github Releases](https://img.shields.io/github/downloads/halkeye/proxy-s3-google-oauth/latest/total.svg)](https://github.com/halkeye/proxy-s3-google-oauth/releases)
 [![Docker Stars](https://img.shields.io/docker/stars/halkeye/proxy-s3-google-oauth.svg)](https://hub.docker.com/r/halkeye/proxy-s3-google-oauth/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/halkeye/proxy-s3-google-oauth.svg)](https://hub.docker.com/r/halkeye/proxy-s3-google-oauth/)
-[![Docker Automated buil](https://img.shields.io/docker/automated/halkeye/proxy-s3-google-oauth.svg)](https://hub.docker.com/r/halkeye/proxy-s3-google-oauth/)
+[![Docker Automated buil](https://img.shields.io/docker/automated/halkeye/proxy-s3-google-oauth.svg)](https://hub.docker.com/r/halkeye/proxy-s3-google-oauth/) [![Greenkeeper badge](https://badges.greenkeeper.io/halkeye/proxy-s3-google-oauth.svg)](https://greenkeeper.io/)
 
 ## What does it do?
 
