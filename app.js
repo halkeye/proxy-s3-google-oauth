@@ -92,7 +92,7 @@ function authenticationMiddleware () {
 app.get('*', authenticationMiddleware(), function (req, res, next) {
   var prefix = url.parse(req.originalUrl).pathname.split('/').slice(1).join('/');
   if (!prefix || prefix.endsWith('/')) {
-    s3bucket.listObjects({ Delimiter: `/${prefix}`, Prefix: prefix }, function (err, data) {
+    s3bucket.listObjects({ Delimiter: `/`, Prefix: prefix }, function (err, data) {
       if (err) { return next(err); }
       const hasIndex = !!data.Contents.find(c => c.Key === `${prefix}index.html`);
       if (hasIndex) {
