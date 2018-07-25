@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "docker:build": "docker build -t halkeye/proxy-s3-google-oauth .",
     "docker:run": "docker run --rm -it --name halkeye-proxy-s3-google-oauth -e BASE_URL -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_REGION -e AWS_S3_BUCKET -e GOOGLE_CLIENT_ID -e GOOGLE_CLIENT_SECRET -e GOOGLE_HOSTED_DOMAIN -p 3000:3000 halkeye/proxy-s3-google-oauth",
     "dev": "DEBUG=proxy-s3-google-oauth:* nodemon --exec npm start",
     "test": "eslint ."
