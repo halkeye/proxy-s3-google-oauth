@@ -32,5 +32,3 @@ npm-debug.log
 ### Project Specific
 /config.yml
 /users.json
-/public/stylesheets/style.css
-/public/stylesheets/style.css.*
