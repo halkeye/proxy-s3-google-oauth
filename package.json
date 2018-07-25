@@ -8,27 +8,27 @@
     "test": "eslint ."
   },
   "dependencies": {
-    "aws-sdk": "^2.208.0",
-    "body-parser": "^1.18.2",
+    "aws-sdk": "^2.280.1",
+    "body-parser": "^1.18.3",
     "debug": "^3.1.0",
-    "ejs": "^2.5.7",
-    "express": "~4.16.1",
+    "ejs": "^2.6.1",
+    "express": "~4.16.3",
     "express-session": "^1.15.6",
-    "mime": "^2.0.3",
+    "mime": "^2.3.1",
     "morgan": "^1.9.0",
     "node-sass-middleware": "0.11.0",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
-    "serve-favicon": "^2.4.5"
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "eslint": "^5.0.0",
+    "eslint": "^5.2.0",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.4.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "nodemon": "^1.14.7"
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "nodemon": "^1.18.3"
   }
 }
