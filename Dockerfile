@@ -1,6 +1,6 @@
 FROM node:8-alpine
+HEALTHCHECK --interval=5m --timeout=3s CMD node bin/healthcheck.js
 MAINTAINER Gavin Mogan <docker@gavinmogan.com>
-EXPOSE 3000
 WORKDIR /usr/src/app
 COPY . /usr/src/app/
 RUN NODE_ENV=production npm install

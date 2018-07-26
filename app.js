@@ -7,7 +7,6 @@
 
 var express = require('express');
 var path = require('path');
-var fs = require('fs');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var AWS = require('aws-sdk');
@@ -55,6 +54,10 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.get('/healthcheck', function healthcheck (req, res) {
+  res.send('OK');
+});
 
 app.post('/login', passport.authenticate('', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'], hd: process.env.GOOGLE_HOSTED_DOMAIN }));
