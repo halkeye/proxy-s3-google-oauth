@@ -15,6 +15,7 @@ A simple little server to proxy content from an s3 bucket through an expressjs s
 All configuration is done with env variables
 
 * `BASE_URL` - Return url for google oauth
+* `COOKIE_SECRET` - Secret used for signing cookies
 * `GOOGLE_CLIENT_ID` - OAuth client id
 * `GOOGLE_CLIENT_SECRET` - OAuth Client Secret
 * (Optional) `GOOGLE_HOSTED_DOMAIN` - Domain for limiting to single domain for google apps

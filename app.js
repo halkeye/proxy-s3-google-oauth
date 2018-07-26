@@ -47,7 +47,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-  secret: 'cookie_secret cat',
+  secret: process.env.COOKIE_SECRET || 'cookie_secret cat',
   resave: true,
   saveUninitialized: true,
   cookie: { secure: true }
