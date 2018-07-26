@@ -13,12 +13,11 @@ var bodyParser = require('body-parser');
 var AWS = require('aws-sdk');
 var mime = require('mime');
 var url = require('url');
-var session = require('express-session');
+var session = require('cookie-session');
 
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-var users = fs.existsSync('./users.json') ? require('./users.json') : [];
 passport.use(
   new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -26,13 +25,7 @@ passport.use(
     callbackURL: `${process.env.BASE_URL}/auth/google/callback`
   },
   function (accessToken, refreshToken, profile, cb) {
-    let user = users.find(user => user.googleId === profile.id);
-    if (!user) {
-      user = { googleId: profile.id, accessToken, refreshToken, profile };
-      users.push(user);
-      fs.writeFileSync('./users.json', JSON.stringify(users));
-    }
-    cb(null, user);
+    cb(null, { googleId: profile.id, name: profile.displayName });
   })
 );
 
@@ -66,6 +59,10 @@ app.use(passport.session());
 app.post('/login', passport.authenticate('', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'], hd: process.env.GOOGLE_HOSTED_DOMAIN }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function (req, res) {
+  // Explicitly save the session before redirecting!
+  // workaround for https://github.com/jaredhanson/passport/issues/482
+  req.session.save();
+
   var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
   delete req.session.redirectTo;
   // is authenticated ?
