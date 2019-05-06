@@ -1,7 +1,13 @@
 
-['BASE_URL', 'AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_REGION', 'AWS_S3_BUCKET', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET'].forEach(key => {
+['BASE_URL', 'AWS_REGION', 'AWS_S3_BUCKET', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET'].forEach(key => {
   if (!process.env[key]) {
     throw new Error(`Missing Env: ${key}`);
+  }
+});
+
+['AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY'].forEach(key => {
+  if (!process.env[key]) {
+    console.log(`WARNING: ${key} is not provided, I hope you know what you are doing`);
   }
 });
 
@@ -33,7 +39,7 @@ passport.deserializeUser(function (obj, done) { done(null, obj); });
 
 // Set your region for future requests.
 AWS.config.region = process.env.AWS_REGION;
-var s3bucket = new AWS.S3({params: {Bucket: process.env.AWS_S3_BUCKET}});
+var s3bucket = new AWS.S3({ params: { Bucket: process.env.AWS_S3_BUCKET } });
 
 var app = express();
 
