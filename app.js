@@ -17,7 +17,6 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var AWS = require('aws-sdk');
 var mime = require('mime');
-var url = require('url');
 var session = require('cookie-session');
 
 var passport = require('passport');
