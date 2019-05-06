@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:10-alpine
 HEALTHCHECK --interval=5m --timeout=3s CMD node bin/healthcheck.js
 MAINTAINER Gavin Mogan <docker@gavinmogan.com>
 WORKDIR /usr/src/app
