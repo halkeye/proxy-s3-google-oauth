@@ -86,7 +86,7 @@ function authenticationMiddleware () {
 }
 
 app.get('*', authenticationMiddleware(), function (req, res, next) {
-  var prefix = req.originalUrl.split('/').slice(1).join('/');
+  var prefix = req.originalUrl.split('/').slice(1).join('/').split('?')[0];
   if (!prefix || prefix.endsWith('/')) {
     s3bucket.listObjects({ Delimiter: `/`, Prefix: prefix }, function (err, data) {
       if (err) { return next(err); }
